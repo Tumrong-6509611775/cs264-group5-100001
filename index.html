@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
-</hea</head>
+</head>
 <body>
 <div class="header">
     <img src="LOGO.png" alt="Logo" class="logo">
@@ -167,7 +167,8 @@
                 <label>เหตุผลที่ขอเพิ่ม-ถอนรายวิชา</label>
                 <textarea id="cause" name="cause" rows="12" cols="50"></textarea>
             </div>
-
+      
+            <!-- <input type="file" id="input" multiple /> -->
             <!-- เพิ่มปุ่ม Upload File -->
             <button id="customUploadBtn">Upload File</button>
             <div id="fileUploadModal" class="file-upload-modal">
@@ -179,7 +180,7 @@
                     </div>
                     <div class="modal-body">
                         <img src="inmodal.png" alt="Image Description">
-                        <input type="file" id="fileInput" style="display: none;" onchange="updateFileName()">
+                        <input type="file" id="fileInput" style="display: none;" onchange="updateFileName()",multiple>
                         <label for="fileInput" class="customUploadBtn">เลือกไฟล์</label>
                         <span id="selectedFileName"></span>
                         <span class="deleteFileIcon" onclick="deleteSelectedFile()">🗑️</span>
@@ -189,10 +190,10 @@
                 </div>
             </div>
 
-            <span id="selectedFileNameTop"></span>
-
+            <span id="selectedFileNameTop"></span> 
+           
         </div>
-        <input class="submitBtn" type="submit" value="Submit" onclick="submitForm()">
+        <input class="submitBtn" type="submit" value="Submit" onsubmit="submitForm()">
     </form>
 </div>
 
