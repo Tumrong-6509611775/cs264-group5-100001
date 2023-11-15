@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --light-text-color: #666;
+    --white-color: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+.page-header {
+    background: linear-gradient(to right, var(--primary-color), #2980b9);
+    color: var(--white-color);
+    text-align: center;
+    padding: 1.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-details {
+    margin: 30px auto;
+    max-width: 800px;
+    background-color: var(--white-color);
+    border-radius: 15px;
+    box-shadow: 0 0 20px var(--shadow-color);
+    padding: 30px;
+    transition: box-shadow 0.3s ease;
+}
+
+.user-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.user-detail:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.02);
+}
+
+.user-detail .label {
+    width: 200px;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--light-text-color);
+    transition: color 0.3s ease;
+}
+
+.user-detail .value {
+    flex: 1;
+    padding-left: 20px;
+    font-size: 16px;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.no-user-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: var(--light-text-color);
+    transition: color 0.3s ease;
+}
+
+@media only screen and (max-width: 600px) {
+    .user-detail {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-detail .label {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .user-detail .value {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .user-details {
+        margin: 10px;
+        padding: 15px;
+    }
+}
+
+.edit-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.edit-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-link:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+

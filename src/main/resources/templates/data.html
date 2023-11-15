@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" th:href="@{/css/data.css}" />    
+</head>
+
+<body th:class="${user != null} ? 'with-user-data' : 'no-user-data'">
+    <header class="page-header">
+        <h1>User Profile</h1>
+    </header>
+
+    <section th:if="${user != null}" class="user-details">
+        <div class="user-detail">
+            <span class="label">Type:</span>
+            <span class="value" th:text="${user.type}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">Status ID:</span>
+            <span class="value" th:text="${user.statusid}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">Status Name:</span>
+            <span class="value" th:text="${user.tu_status}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">User Name:</span>
+            <span class="value" th:text="${user.username}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">Display Name (TH):</span>
+            <span class="value" th:text="${user.displayname_th}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">Display Name (EN):</span>
+            <span class="value" th:text="${user.displayname_en}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">Email:</span>
+            <span class="value" th:text="${user.email}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">Department:</span>
+            <span class="value" th:text="${user.department}"></span>
+        </div>
+        <div class="user-detail">
+            <span class="label">Faculty:</span>
+            <span class="value" th:text="${user.faculty}"></span>
+        </div>
+        <div class="edit-button">
+            <a th:href="@{/edit}" class="edit-link">Edit</a>
+        </div>
+    </section>
+
+    <div th:if="${user == null}" class="no-user-message">
+        <p>No user data available. Please check back later.</p>
+    </div>
+</body>
+
+</html>

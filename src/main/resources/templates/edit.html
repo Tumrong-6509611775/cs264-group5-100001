@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/edit.css}" rel="stylesheet">
+    <title>User Management</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>User Management</h2>
+        <form id="searchForm">
+            <fieldset>
+                <label for="displayname_th">Search by Display Name (Thai):</label>
+                <div class="search-input">
+                    <input type="text" id="displayname_th" name="displayname_th" placeholder="Enter display name in Thai" required>
+                    <button type="submit" class="search-button">Search</button>
+                    <button type="button" id="clearButton" class="clear-button">Clear Search</button>
+                </div>
+            </fieldset>
+            <div id="searchResults" class="results-container"></div>
+            <div id="loadingSpinner" class="loading-spinner"></div>
+        </form>
+    </div>
+
+    <script th:src="@{/js/edit.js}"></script>
+</body>
+
+</html>
