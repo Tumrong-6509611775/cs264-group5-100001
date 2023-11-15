@@ -5,17 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>คำร้องขอเพิ่ม-ถอน รายวิชา</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleU4_5.css">
     <link rel="shortcut icon" href="#" />
-
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+</hea</head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="Logo" class="logo">
-        <header>คำร้องขอเพิ่ม-ถอน รายวิชา</header>
-        <p>คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต</p>
-        <form id="userForm">
-            <div class="input-field">
+<div class="header">
+    <img src="LOGO.png" alt="Logo" class="logo">
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;มหาวิทยาลัยธรรมศาสตร์</h1>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;THAMMASAT UNIVERSITY</h1>
+    <div class="horizontal-bar">
+    </div>
+</div>
+<div class="sidebar">
+    <!-- เพิ่มแถบสีข้างซ้าย -->
+    <div class="sidebar-content">
+        <ul>
+            <li><a href="#">ตัวอย่างฟอร์มกรอกคำร้อง</a></li>
+            <li><a href="#">เขียนคำร้อง</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <form id="userForm">
+        <div class="input-field">
+            <p>คำร้องขอเพิ่ม-ถอนรายวิชา</p>
+            <p>คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต</p><br>
                 <label>วันเดือนปีที่กรอก</label>
                 <input type="text" placeholder="วันเดือนปีที่กรอก" id="Date" name="Date" required>
             </div>
@@ -150,10 +167,37 @@
                 <label>เหตุผลที่ขอเพิ่ม-ถอนรายวิชา</label>
                 <textarea id="cause" name="cause" rows="12" cols="50"></textarea>
             </div>
+
+            <!-- เพิ่มปุ่ม Upload File -->
+            <button id="customUploadBtn">Upload File</button>
+            <div id="fileUploadModal" class="file-upload-modal">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-title">แนบไฟล์หรือส่งเอกสาร</span>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <img src="inmodal.png" alt="Image Description">
+                        <input type="file" id="fileInput" style="display: none;" onchange="updateFileName()">
+                        <label for="fileInput" class="customUploadBtn">เลือกไฟล์</label>
+                        <span id="selectedFileName"></span>
+                        <span class="deleteFileIcon" onclick="deleteSelectedFile()">🗑️</span>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <span id="selectedFileNameTop"></span>
+
         </div>
-        <input class="submitBtn" type="submit" value="Submit" onsubmit="submitForm()">
+        <input class="submitBtn" type="submit" value="Submit" onclick="submitForm()">
     </form>
-    </div>
+</div>
+
+
+
 </body>
 <script src="script.js" defer></script>
 </html>

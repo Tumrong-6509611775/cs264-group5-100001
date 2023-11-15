@@ -125,3 +125,58 @@ event.preventDefault();
 
 const userForm = document.getElementById('userForm');
 userForm.addEventListener('submit', submitForm);
+
+
+
+// เพิ่มฟังก์ชัน chooseFile() เพื่อเปิด input file
+
+// เรียกใช้ modal เมื่อคลิกที่ปุ่ม Upload File
+// เพิ่มฟังก์ชัน JavaScript เพื่อเปิด modal
+document.getElementById("customUploadBtn").addEventListener("click", function () {
+    document.getElementById("fileUploadModal").style.display = "block";
+});
+
+// เพิ่มฟังก์ชัน JavaScript เพื่อปิด modal
+function closeModal() {
+    document.getElementById("fileUploadModal").style.display = "none";
+}
+// เพิ่มฟังก์ชัน chooseFile() เพื่อเปิด input file
+function chooseFile() {
+    const fileInput = document.getElementById("fileInput");
+    fileInput.click();
+    updateFileName();
+}
+// Function to delete the selected file
+function deleteSelectedFile() {
+    // Reset the file input
+    document.getElementById('fileInput').value = '';
+
+    // Clear the selected file name in the modal
+    document.getElementById('selectedFileName').innerText = '';
+
+    // Clear the selected file name at the top of the page
+    document.getElementById('selectedFileNameTop').innerText = '';
+}
+
+// Function to update the selected file name in the modal
+function updateFileName() {
+    const fileInput = document.getElementById('fileInput');
+    const selectedFileName = document.getElementById('selectedFileName');
+    const selectedFileNameTop = document.getElementById('selectedFileNameTop');
+
+    // Display the selected file name
+    // Check if a file is selected
+    if (fileInput.files.length > 0) {
+        selectedFileName.textContent = `Selected File: ${fileInput.files[0].name}`;
+        selectedFileNameTop.textContent = `Selected File: ${fileInput.files[0].name}`;
+    } else {
+        // Clear the content if no file is selected
+        selectedFileName.textContent = "";
+        selectedFileNameTop.textContent = "";
+    }
+
+}
+
+
+
+
