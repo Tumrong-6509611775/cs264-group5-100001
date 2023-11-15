@@ -13,7 +13,7 @@
     <div class="container">
         <img src="logo.png" alt="Logo" class="logo">
         <header>คำร้องขอเพิ่ม-ถอน รายวิชา</header>
-        <p>คณะวิทยาศตร์และเทคโนโลยี มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต</p>
+        <p>คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต</p>
         <form id="userForm">
             <div class="input-field">
                 <label>วันเดือนปีที่กรอก</label>
@@ -58,12 +58,12 @@
                 </div>
                 <div class="input-field">
                         <label>เบอร์โทรศัพท์มือถือ</label>
-                        <input type="text" placeholder="เบอร์โทรศัพท์มือถือ" id="mobilePhone" required>
+                        <input type="text" placeholder="เบอร์โทรศัพท์มือถือ" id="mobilePhone" name="mobilePhone" required>
                 </div>
 
                 <div class="input-field">
                         <label>เบอร์โทรศัพท์บ้าน</label>
-                        <input type="text" placeholder="เบอร์โทรศัพท์บ้าน" id="phone">
+                        <input type="text" placeholder="เบอร์โทรศัพท์บ้าน" id="phone" , name="phone">
                 </div>
 
                 <div class="input-field">
@@ -105,7 +105,7 @@
                 </div>
         </div>
 
-        <span class="title">รายละเอียดการเพิ่มม-ถอนวิชา</span>
+        <span class="title">รายละเอียดการเพิ่ม-ถอนวิชา</span>
         <div class="subjectFields">
             <div class="button-container">
                 <label>จำนวนขอเพิ่มรายวิชา</label>
@@ -124,7 +124,6 @@
                         <th>วันเวลาที่สอน</th>
                         <th>หน่วยกิต</th>
                         <th>ชื่อผู้สอน</th>
-                        <th>ผู้สอนอนุญาต</th>
                     </tr>
                 </table>
 
@@ -145,7 +144,6 @@
                         <th>วันเวลาที่สอน</th>
                         <th>หน่วยกิต</th>
                         <th>ชื่อผู้สอน</th>
-                        <th>ผู้สอนอนุญาต</th>
                     </tr>
                 </table>
             <div class="cause-field">
@@ -153,7 +151,7 @@
                 <textarea id="cause" name="cause" rows="12" cols="50"></textarea>
             </div>
         </div>
-        <input class="submitBtn" type="submit" value="Submit" onclick="submitForm()">
+        <input class="submitBtn" type="submit" value="Submit" onsubmit="submitForm()">
     </form>
     </div>
 </body>
