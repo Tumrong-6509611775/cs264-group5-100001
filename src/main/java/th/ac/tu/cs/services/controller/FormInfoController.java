@@ -21,12 +21,25 @@ public class FormInfoController {
     }
 
     @PostMapping("/index")
-    public String form(@RequestParam String studentFirstName, Model model) {
+    public String form(@RequestParam String JSON1, Model model) {
         FormInfo info = new FormInfo();
-        info.setStudentFirstName(studentFirstName);
-        model.addAttribute("info", info);
+        System.out.println("check post index");
+        info.setUsername(JSON1);
+        info.setStudentFirstName(JSON1);
+        info.setStudentLastName(JSON1);
+        info.setNameTitles(JSON1);
+        info.setStudentYear(JSON1);
+        info.setStudyField(JSON1);
+        info.setMobilePhone(JSON1);
+        info.setPhone(JSON1);
+        info.setAdvisor(JSON1);
+        info.setAddressNumber(JSON1);
+        info.setMoo(JSON1);
+        info.setTumbol(JSON1);
+        info.setAmphur(JSON1);
+        info.setProvince(JSON1);
+        info.setPostalcode(JSON1);
         jdbcFormInfoRepository.saveInfo(info);
-        jdbcFormInfoRepository.saveSubject(info);
         return "index";
     }
 }
