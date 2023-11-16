@@ -41,65 +41,25 @@ event.preventDefault();
 //console.log(addSubjectList.rows[1].cells[0].querySelector('input').value);
   const formData = new FormData(document.getElementById('userForm'))
   const user = {
-  				date: formData.get('Date'),
-                nameTitles: formData.get('nameTitles'),
+
+                username : formData.get('studentId'),
                 studentFirstName: formData.get('studentFirstName'),
                 studentLastName: formData.get('studentLastName'),
-                studentId: formData.get('studentId'),
+                nameTitles: formData.get('nameTitles'),
                 studentYear: formData.get('studentYear'),
                 studyField: formData.get('studyField'),
+                mobilePhone: formData.get('mobilePhone'),
+                phone: formData.get('phone'),
                 advisor: formData.get('advisor'),
                 addressNumber: formData.get('addressNumber'),
                 moo: formData.get('moo'),
                 tumbol: formData.get('tumbol'),
                 amphur: formData.get('amphur'),
-                Province: formData.get('Province'),
-                postalCode: formData.get('postalCode'),
-                mobilePhone: formData.get('mobilePhone'),
-                phone: formData.get('phone'),
-                cause: formData.get('cause'),
-
-                addsubject : [],
-                dropsubject : []
+                province: formData.get('Province'),
+                postalcode: formData.get('postalCode'),
             };
-            const addTable = document.getElementById("addSubjectList");
-            const dropTable = document.getElementById("dropSubjectList");
-
-            var addNum = addTable.rows.length;
-            var dropNum = dropTable.rows.length;
-            //console.log(addNum);
-           // console.log(dropNum);
-            for(let i = 1 ; i < addNum ; i++){
-                    var addEachsubject = {
-                        addsubjectcode : addSubjectList.rows[i].cells[0].querySelector('input').value,
-                        addsubjectName : addSubjectList.rows[i].cells[1].querySelector('input').value,
-                        addsubjectSection : addSubjectList.rows[i].cells[2].querySelector('input').value,
-                        addsubjectDate : addSubjectList.rows[i].cells[3].querySelector('input').value,
-                        addsubjectCredit : addSubjectList.rows[i].cells[4].querySelector('input').value,
-                        addsubjectTeacher : addSubjectList.rows[i].cells[5].querySelector('input').value,
-
-                    }
-                    user.addsubject.push(addEachsubject);
-            }
-            for(let i = 1 ; i < dropNum ; i++){
-                var dropEachsubject = {
-                    dropsubjectcode : dropSubjectList.rows[i].cells[0].querySelector('input').value,
-                    dropsubjectName : dropSubjectList.rows[i].cells[1].querySelector('input').value,
-                    dropsubjectSection : dropSubjectList.rows[i].cells[2].querySelector('input').value,
-                    dropsubjectDate : dropSubjectList.rows[i].cells[3].querySelector('input').value,
-                    dropsubjectCredit : dropSubjectList.rows[i].cells[4].querySelector('input').value,
-                    dropsubjectTeacher : dropSubjectList.rows[i].cells[5].querySelector('input').value,
-
-                }
-                user.dropsubject.push(dropEachsubject);
-        }
-
-
-
-
             var JSON_user = JSON.stringify(user);
-            console.log(JSON_user);
-        fetch('/path/form/index', {
+            fetch('/path/form/index', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -120,6 +80,104 @@ event.preventDefault();
                 //console.error('Error:', error);
                 //document.getElementById('result').innerText = 'An error occurred while saving the user.';
             });
+            console.log(JSON_user);
+
+                /* cause: formData.get('cause')*/
+            const addTable = document.getElementById("addSubjectList");
+            const dropTable = document.getElementById("dropSubjectList");
+
+            var addNum = addTable.rows.length;
+            var dropNum = dropTable.rows.length;
+            //console.log(addNum);
+           // console.log(dropNum);
+            for(let i = 1 ; i < addNum ; i++){
+                    var addEachsubject = {
+                        username : formData.get('studentId'),
+                        subjectCode : addSubjectList.rows[i].cells[0].querySelector('input').value,
+                        subjectName : addSubjectList.rows[i].cells[1].querySelector('input').value,
+                        subjectSection : addSubjectList.rows[i].cells[2].querySelector('input').value,
+                        subjectDate : addSubjectList.rows[i].cells[3].querySelector('input').value,
+                        subjectCredit : addSubjectList.rows[i].cells[4].querySelector('input').value,
+                        subjectTeacher : addSubjectList.rows[i].cells[5].querySelector('input').value,
+                        type : "Register",
+                        cause : formData.get('cause')
+
+                    }
+                    var JSON_subject = JSON.stringify(addEachsubject);
+                    console.log(JSON_subject);
+                    fetch('/path/form/subject', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON_subject
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            document.getElementById('result').innerText = 'User saved successfully.';
+                            console.log("GOOD");
+                        } else {
+                            /*response.text().then(errorMessage => {
+                                document.getElementById('result').innerText = 'An error occurred while saving the user. Error message: ' + errorMessage;
+                            });*/
+                        }
+                    })
+                    .catch(error => {
+                        //console.error('Error:', error);
+                        //document.getElementById('result').innerText = 'An error occurred while saving the user.';
+                    });
+
+            }
+            for(let i = 1 ; i < dropNum ; i++){
+                var dropEachsubject = {
+                    username : formData.get('studentId'),
+                    subjectCode : dropSubjectList.rows[i].cells[0].querySelector('input').value,
+                    subjectName : dropSubjectList.rows[i].cells[1].querySelector('input').value,
+                    subjectSection : dropSubjectList.rows[i].cells[2].querySelector('input').value,
+                    subjectDate : dropSubjectList.rows[i].cells[3].querySelector('input').value,
+                    subjectCredit : dropSubjectList.rows[i].cells[4].querySelector('input').value,
+                    subjectTeacher : dropSubjectList.rows[i].cells[5].querySelector('input').value,
+                    type : "Withdraw",
+                    cause : formData.get('cause')
+
+                    
+                }
+
+                var JSON_subject = JSON.stringify(dropEachsubject);
+                console.log(JSON_subject);
+                fetch('/path/form/subject', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON_subject
+                })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('result').innerText = 'User saved successfully.';
+                        console.log("GOOD");
+                    } else {
+                        /*response.text().then(errorMessage => {
+                            document.getElementById('result').innerText = 'An error occurred while saving the user. Error message: ' + errorMessage;
+                        });*/
+                    }
+                })
+                .catch(error => {
+                    //console.error('Error:', error);
+                    //document.getElementById('result').innerText = 'An error occurred while saving the user.';
+                });
+                    
+
+        }
+
+
+
+
+            
+
+     
+            
+            
             console.log("wqer");
 }
 

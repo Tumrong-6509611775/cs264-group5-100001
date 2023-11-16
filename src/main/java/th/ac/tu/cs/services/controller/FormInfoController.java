@@ -1,6 +1,7 @@
 package th.ac.tu.cs.services.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +32,20 @@ public class FormInfoController {
     public String form(@RequestBody FormInfo formInfo) throws JsonProcessingException {
         try {
             jdbcFormInfoRepository.saveInfo(formInfo);
-            jdbcFormInfoRepository.saveSubject(formInfo);
+
+            //jdbcFormInfoRepository.saveSubject(formInfo);
         } catch (Exception e) {
+            System.err.println(e);
+        }
+        return "index";
+    }
+
+    @PostMapping("/subject")
+    public String subj(@RequestBody FormInfo subj) throws JsonProcessingException{
+        try{
+            jdbcFormInfoRepository.saveSubject(subj);
+
+        }catch (Exception e){
             System.err.println(e);
         }
         return "index";
