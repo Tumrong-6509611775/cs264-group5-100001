@@ -1,5 +1,8 @@
 package th.ac.tu.cs.services.model;
 
+/**
+ * This class represents a user in the system.
+ */
 public class User {
     private String type;
     private String username;

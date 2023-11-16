@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import th.ac.tu.cs.services.model.User;
 
+/**
+ * This class represents a service for authenticating users against the TU API.
+ * It uses a RestTemplate to make HTTP requests to the API and authenticate users.
+ */
 @Service
 public class TuApiService {
     
@@ -91,5 +96,32 @@ public class TuApiService {
             logger.error("Error while making the authentication request. Please check the request and try again.", e);
             return null;
         }
+    }
+
+    
+    /**
+     * Fetches student information from the TU API.
+     *
+     * This method sends a GET request to the TU API's student info endpoint, passing the student's username as a query parameter.
+     * The API's response is deserialized into a User object and returned.
+     *
+     * @param username the username of the student whose information is to be fetched
+     * @return a User object containing the student's information
+     */
+    public User getStudentInfo(String username) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("Application-Key", tuApiToken);
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        String apiURlStudent = UriComponentsBuilder.fromUriString(tuApiUrl)
+            .path("/v2/profile/std/info/")
+            .queryParam("id", username)
+            .toUriString();
+
+        ResponseEntity<User> responseEntity = restTemplate.exchange(apiURlStudent, HttpMethod.GET, entity, User.class);
+
+        return responseEntity.getBody();
     }
 }
