@@ -16,10 +16,11 @@ public class JdbcFormInfoRepository implements FormInfoRepository {
     public JdbcFormInfoRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
     @Override
-    public int save(FormInfo formInfo) {
-        String INSERT_STUDENTSINFO_SQL = "INSERT INTO StudentsInfo (username, studentFirstName, studentLastName, nameTitles, studentYear, studyField, mobilePhone, phone, advisor, addressNumber, moo, tumbol, amphur, province, postalcode) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    public int saveInfo(FormInfo formInfo) {
+        String INSERT_STUDENTSINFO_SQL = "INSERT INTO StudentsInfo (username, studentFirstName, studentLastName, " +
+                "nameTitles, studentYear, studyField, mobilePhone, phone, advisor, addressNumber, moo, tumbol, " +
+                "amphur, province, postalcode) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         return jdbcTemplate.update(INSERT_STUDENTSINFO_SQL, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps) throws SQLException {
@@ -38,6 +39,26 @@ public class JdbcFormInfoRepository implements FormInfoRepository {
                 ps.setString(13, formInfo.getAmphur());
                 ps.setString(14, formInfo.getProvince());
                 ps.setString(15, formInfo.getPostalcode());
+            }
+        });
+    }
+
+    @Override
+    public int saveSubject(FormInfo formInfo) {
+        String INSERT_SUBJECTS_SQL = "INSERT INTO Subjects (username, SubjectCode, SubjectName, SubjectSection, " +
+                "SubjectDate, SubjectCredit, SubjectTeacher, Type, cause) VALUES (?,?,?,?,?,?,?,?,?)";
+        return jdbcTemplate.update(INSERT_SUBJECTS_SQL, new PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps) throws SQLException {
+                ps.setString(1, formInfo.getUsername());
+                ps.setString(2, formInfo.getSubjectCode());
+                ps.setString(3, formInfo.getSubjectName());
+                ps.setString(4, formInfo.getSubjectSection());
+                ps.setString(5, formInfo.getSubjectDate());
+                ps.setString(6, formInfo.getSubjectCredit());
+                ps.setString(7, formInfo.getSubjectTeacher());
+                ps.setString(8, formInfo.getType());
+                ps.setString(9, formInfo.getCause());
             }
         });
     }

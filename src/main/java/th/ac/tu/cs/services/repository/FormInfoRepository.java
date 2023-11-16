@@ -4,6 +4,8 @@ import th.ac.tu.cs.services.model.FormInfo;
 
 public interface FormInfoRepository {
 
-    int save(FormInfo formInfo);
+    int saveInfo(FormInfo formInfo);
+
+    int saveSubject(FormInfo formInfo);
 
 }

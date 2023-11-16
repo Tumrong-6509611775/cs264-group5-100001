@@ -5,13 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import th.ac.tu.cs.services.model.FormInfo;
 import th.ac.tu.cs.services.repository.JdbcFormInfoRepository;
-import th.ac.tu.cs.services.repository.JdbcStudentRepository;
 
 @Controller
 public class FormInfoController {
+
     private final JdbcFormInfoRepository jdbcFormInfoRepository;
 
-    public FormInfoController(JdbcStudentRepository jdbcStudentRepository, JdbcFormInfoRepository jdbcFormInfoRepository) {
+    public FormInfoController(JdbcFormInfoRepository jdbcFormInfoRepository) {
         this.jdbcFormInfoRepository = jdbcFormInfoRepository;
     }
 
@@ -25,7 +25,8 @@ public class FormInfoController {
         FormInfo info = new FormInfo();
         info.setStudentFirstName(studentFirstName);
         model.addAttribute("info", info);
-        jdbcFormInfoRepository.save(info);
+        jdbcFormInfoRepository.saveInfo(info);
+        jdbcFormInfoRepository.saveSubject(info);
         return "index";
     }
 }
