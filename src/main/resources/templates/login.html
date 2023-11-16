@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
     <title>Login</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <div class="login-container">
-        <form th:action="@{/login}" method="post" class="login-form">
-            <header>
-                <h1>Login</h1>
-            </header>
-            <!-- Display error message if authentication fails -->
-            <p th:if="${error}" class="error-message" th:text="${error}"></p>
-            <div class="input-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
+    <div class="container">
+        <div class="banner-info">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Emblem_of_Thammasat_University.svg/1024px-Emblem_of_Thammasat_University.svg.png" alt="">
+            <br>
+        </div>
+        <h1>RequestForm</h1>
+        <div class="form-container">
+            <form th:action="@{/login}" method="post" class="login-form">
+                <div class="input-group">
+                    <p>Login</p>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required><br><br>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br>
+
+                </div>
+                <button type="submit">Login</button>
+            </form>
+
+        </div>
+        <a href="#" class="contact-button">ติดต่อเจ้าหน้าที่ระบบ</a>
     </div>
+<script src="login.js"></script>
+
 </body>
 </html>
