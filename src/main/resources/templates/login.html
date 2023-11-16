@@ -17,6 +17,8 @@
             <form th:action="@{/login}" method="post" class="login-form">
                 <div class="input-group">
                     <p>Login</p>
+                    <!-- Display error message if authentication fails -->
+                    <p th:if="${error}" class="error-message" th:text="${error}"></p>
                     <input type="text" id="username" name="username" placeholder="Enter your username" required><br><br>
                 </div>
                 <div class="input-group">
