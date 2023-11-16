@@ -4,6 +4,9 @@ import java.util.List;
 
 import th.ac.tu.cs.services.model.User;
 
+/**
+ * This interface represents a repository for managing student data.
+ */
 public interface StudentRepository {
     int save(User user);
 

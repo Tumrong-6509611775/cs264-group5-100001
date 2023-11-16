@@ -10,6 +10,10 @@ import th.ac.tu.cs.services.model.User;
 import th.ac.tu.cs.services.repository.JdbcStudentRepository;
 import th.ac.tu.cs.services.service.TuApiService;
 
+/**
+ * This class represents the controller for handling login requests.
+ * It uses TuApiService and JdbcStudentRepository for authentication and query.
+ */
 @Controller
 public class LoginController {
 
@@ -51,4 +55,5 @@ public class LoginController {
     public String data() {
         return "data";
     }
+
 }
