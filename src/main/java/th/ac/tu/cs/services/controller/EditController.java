@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import th.ac.tu.cs.services.model.User;
 import th.ac.tu.cs.services.repository.JdbcStudentRepository;
 
-@Controller
+@Controller("/index")
 public class EditController {
 
     JdbcStudentRepository jdbcStudentRepository;
