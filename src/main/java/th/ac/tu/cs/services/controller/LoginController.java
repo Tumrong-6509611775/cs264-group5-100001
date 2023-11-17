@@ -25,7 +25,7 @@ public class LoginController {
         this.jdbcStudentRepository = jdbcStudentRepository;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String login() {
         return "login";
     }
@@ -44,16 +44,11 @@ public class LoginController {
         if (user != null) {
             model.addAttribute("user", user);
             jdbcStudentRepository.save(user);
-            return "data";
+            return "redirect:/path/form/index";
         } else {
             model.addAttribute("error", "Invalid username or password. Please try again.");
-            return "login";
+            return "redirect:/";
         }
-    }
-
-    @GetMapping("/data")
-    public String data() {
-        return "data";
     }
 
 }
