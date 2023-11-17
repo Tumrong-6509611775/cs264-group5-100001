@@ -50,4 +50,10 @@ public class FormInfoController {
         }
         return "index";
     }
+
+    @GetMapping("/example")
+    public String example() {
+        return "Example";
+    }
+
 }

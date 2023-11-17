@@ -140,7 +140,7 @@ event.preventDefault();
                     type : "Withdraw",
                     cause : formData.get('cause')
 
-                    
+
                 }
 
                 var JSON_subject = JSON.stringify(dropEachsubject);
@@ -166,18 +166,18 @@ event.preventDefault();
                     //console.error('Error:', error);
                     //document.getElementById('result').innerText = 'An error occurred while saving the user.';
                 });
-                    
+
 
         }
 
 
 
 
-            
 
-     
-            
-            
+
+
+
+
             console.log("wqer");
 }
 
